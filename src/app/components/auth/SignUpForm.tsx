@@ -38,10 +38,10 @@ export const SignUpForm: React.FC = () => {
   };
 
   return (
-    <div className="h-screen w-screen flex flex-col bg-gray-200 dark:bg-[#1e1e1e] text-gray-900 dark:text-gray-100 transition-colors duration-200 overflow-hidden">
-      <header className="py-1.5 w-full mt-2">
+    <div className="h-screen w-screen flex flex-col items-center justify-center bg-gray-200 dark:bg-[#1e1e1e] text-gray-900 dark:text-gray-100 transition-colors duration-200 overflow-hidden">
+      <header className="py-1.5 w-[62%] mt-2">
         <div className="px-4">
-          <div className="flex justify-around items-center">
+          <div className="flex justify-between items-center">
             <div className="flex items-center space-x-4">
               <div className="text-xl font-bold">DirectCodes</div>
               <ThemeToggle />
