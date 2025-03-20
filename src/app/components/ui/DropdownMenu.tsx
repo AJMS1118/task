@@ -1,6 +1,6 @@
 import React, { useState, useRef } from "react";
 import Link from "next/link";
-import { ChevronDown } from "lucide-react";
+import { ChevronDown, Cuboid } from "lucide-react";
 
 interface MenuItem {
   label: string;
@@ -36,6 +36,7 @@ export const DropdownMenu: React.FC<DropdownMenuProps> = ({ label, items }) => {
       onMouseLeave={handleMouseLeave}
     >
       <span className="flex items-center font-medium text-gray-800 dark:text-gray-200  cursor-pointer">
+        <Cuboid size={18} className="text-orange-500 mr-1" />
         {label}
         <ChevronDown
           size={14}
