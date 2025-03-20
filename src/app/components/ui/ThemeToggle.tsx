@@ -14,7 +14,6 @@ export const ThemeToggle: React.FC = () => {
         aria-label={isDark ? "Cambiar a modo claro" : "Cambiar a modo oscuro"}
       >
         <div className="absolute inset-0 flex items-center justify-between">
-          {/* Círculo izquierdo - Luna */}
           <div
             className={`h-8 w-8 rounded-full transition-all duration-300 ${
               isDark ? "bg-gray-800 scale-110" : "bg-white scale-75"
@@ -46,7 +45,7 @@ export const ThemeToggle: React.FC = () => {
           }`}
         >
           <Moon
-            size={14}
+            size={`${!isDark ? "14" : "18"}`}
             className={`${!isDark ? "text-gray-950" : "text-white"}`}
           />
         </span>
@@ -56,7 +55,7 @@ export const ThemeToggle: React.FC = () => {
           }`}
         >
           <Sun
-            size={14}
+            size={`${isDark ? "14" : "18"}`}
             className={`${!isDark ? "text-gray-950" : "text-white"}`}
           />
         </span>
