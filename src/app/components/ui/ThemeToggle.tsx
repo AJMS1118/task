@@ -19,7 +19,6 @@ export const ThemeToggle: React.FC = () => {
               isDark ? "toogle-dark scale-100" : "toogle-light scale-75"
             }`}
           />
-
           <div
             className={`h-3 w-2.5 -mx-2 transition-colors duration-300 ${
               !isDark ? "bg-white" : "bg-[#303030]"
