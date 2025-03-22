@@ -104,7 +104,7 @@ export const Toast: React.FC<ToastProps> = ({ type, message, title }) => {
 
 export const ToastContainer: React.FC = () => {
   return (
-    <div className="fixed top-4 left-3 z-50">
+    <div className="hidden xl:block fixed top-4 left-3 z-50">
       <Toast type="success" message="Lorem ipsum" title="Success" />
       <Toast type="error" message="Lorem ipsum" title="Error" />
       <Toast type="warning" message="Lorem ipsum" title="Warning" />

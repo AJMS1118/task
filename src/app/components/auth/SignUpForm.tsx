@@ -38,23 +38,44 @@ export const SignUpForm: React.FC = () => {
   };
 
   return (
-    <div className="h-screen w-screen flex flex-col items-center justify-center bg-gray-200 dark:bg-[#1e1e1e] text-gray-900 dark:text-gray-100 transition-colors duration-200 overflow-hidden">
-      <header className="py-1.5 w-[62%] mt-2">
+    <div className="h-screen w-screen flex flex-col items-center justify-center bg-gray-300 dark:bg-[#1e1e1e] text-gray-900 dark:text-gray-100 transition-colors duration-200 overflow-hidden">
+      <header className="py-1.5 mt-2 md:hidden">
+        <div className="text-xl font-bold">DirectCodes</div>
+      </header>
+      <header className="py-1.5 w-full mt-2">
         <div className="px-4">
-          <div className="flex justify-between items-center">
-            <div className="flex items-center space-x-4">
+          <div className="md:hidden absolute top-4 left-4 z-20">
+            <button className="p-2 rounded-full bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-white">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-5 w-5"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M4 6h16M4 12h16M4 18h16"
+                />
+              </svg>
+            </button>
+          </div>
+
+          <div className="flex justify-between md:justify-around items-center">
+            <div className="hidden md:flex items-center space-x-2 sm:space-x-4">
               <div className="text-xl font-bold">DirectCodes</div>
               <ThemeToggle />
-              <DropdownMenu label="Product page" items={productMenuItems} />
+              <div className="hidden sm:block md:block">
+                <DropdownMenu label="Product page" items={productMenuItems} />
+              </div>
             </div>
 
-            <div className="flex items-center space-x-4">
+            <div className="hidden md:flex items-center space-x-4">
               <LanguageSelector onSelectLanguage={handleSelectLanguage} />
               <Link href="/">
-                <button
-                  style={{}}
-                  className="py-1.5 px-5 rounded-full  bg-white dark:bg-[#212121] dark:shadow-gray-500 dark:shadow-sm dark:text-white border-gray-300 text-sm text-gray-800 hover:bg-gray-50 transition-colors duration-200"
-                >
+                <button className="py-1.5 px-5 rounded-full bg-white dark:bg-[#212121] dark:shadow-gray-500 dark:shadow-sm dark:text-white border-gray-300 text-sm text-gray-800 hover:bg-gray-50 transition-colors duration-200">
                   Log In
                 </button>
               </Link>
@@ -68,8 +89,13 @@ export const SignUpForm: React.FC = () => {
         </div>
       </header>
 
-      <main className="flex-grow flex justify-center items-center py-2">
-        <div className="w-full max-w-xs bg-white dark:bg-[#292929]/90 rounded-2xl relative p-4 border border-gray-200 dark:border-gray-700 shadow-[0_0_20px_5px_rgba(0,0,0,0.3)] dark:shadow-[0_0_25px_rgba(255,255,255,0.15)]">
+      <main className="flex-grow flex justify-center items-center py-2 md:py-4 lg:py-6 px-4">
+        <div
+          className="w-full max-w-[280px] sm:max-w-[320px] md:max-w-xs lg:max-w-sm 
+                      bg-white dark:bg-[#222222] rounded-2xl relative p-3 sm:p-4 
+                      border border-gray-200 dark:border-gray-700 
+                      shadow-[0_0_20px_5px_rgba(0,0,0,0.3)] dark:shadow-[0_0_25px_rgba(255,255,255,0.15)]"
+        >
           <div className="absolute inset-0 rounded-2xl overflow-hidden pointer-events-none">
             <div className="absolute inset-x-0 top-0 h-20 bg-gradient-to-b from-white/5 to-transparent blur-sm"></div>
             <div className="absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-white/5 to-transparent blur-sm"></div>
@@ -138,14 +164,14 @@ export const SignUpForm: React.FC = () => {
                     I agree with{" "}
                     <Link
                       href="/terms"
-                      className="font-bold text-gray-900 dark:text-white hover:underline"
+                      className="font-semibold text-gray-900 dark:text-white hover:underline"
                     >
                       Terms & Conditions
                     </Link>{" "}
                     and{" "}
                     <Link
                       href="/privacy"
-                      className="font-bold text-gray-900 dark:text-white hover:underline"
+                      className="font-semibold text-gray-900 dark:text-white hover:underline"
                     >
                       Privacy Policy
                     </Link>
@@ -223,7 +249,7 @@ export const SignUpForm: React.FC = () => {
       <footer className="py-1.5 w-full mb-4">
         <div className="px-6 w-full">
           <div className="flex justify-around items-center w-full">
-            <div className="flex space-x-4">
+            <div className="hidden sm:flex space-x-4">
               <Link
                 href="/terms"
                 className="text-xs text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-200"
@@ -251,11 +277,11 @@ export const SignUpForm: React.FC = () => {
               <input
                 type="email"
                 placeholder="E-mail address"
-                className="px-3 py-2 pl-9 w-56 text-xs text-gray-700 dark:text-gray-300 bg-gray-300 dark:bg-[#121212] border border-gray-300 dark:border-gray-600 rounded-l-full focus:outline-none "
+                className="px-3 py-2 pl-9 w-56 text-xs text-gray-700 dark:text-gray-300 bg-gray-300 dark:bg-[#121212] rounded-l-full focus:outline-none "
               />
               <button
                 type="button"
-                className="absolute -right-2 rounded-full px-4 py-3 text-xs text-black dark:text-white bg-white dark:bg-[#212121] hover:bg-gray-50 dark:hover:bg-gray-750 border border-gray-300 dark:border-gray-700 transition-colors duration-200"
+                className="absolute -right-2 rounded-full px-4 py-2.5 text-xs text-black dark:text-white bg-white dark:bg-[#222222] hover:bg-gray-50 dark:hover:bg-gray-750 transition-colors duration-200"
               >
                 Subscribe
               </button>
