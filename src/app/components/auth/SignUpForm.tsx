@@ -45,7 +45,7 @@ export const SignUpForm: React.FC = () => {
       <header className="py-1.5 w-full mt-2">
         <div className="px-4">
           <div className="md:hidden absolute top-4 left-4 z-20">
-            <button className="p-2 rounded-full bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-white">
+            <button className="p-2 rounded-full bg-gray-100 dark:bg-[#303030] text-gray-800 dark:text-white">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="h-5 w-5"
@@ -80,7 +80,11 @@ export const SignUpForm: React.FC = () => {
                 </button>
               </Link>
               <Link href="/">
-                <button className="py-1.5 px-5 rounded-full text-sm font-medium shadow-sm hover:shadow transition-shadow duration-200 bg-gradient-to-br from-[#d8b4fe] from-0% via-white via-50% to-[#fed7aa] to-100% dark:bg-gradient-to-br dark:from-[#6B317D] dark:from-0% dark:via-[#121212] dark:via-60% dark:to-orange-400 dark:to-100% dark:text-white">
+                <button
+                  className={`py-1.5 px-5 rounded-full text-sm font-medium shadow-sm hover:shadow transition-shadow duration-200 ${
+                    isDark ? "button-dark-gradient" : "button-light-gradient"
+                  } dark:text-white`}
+                >
                   Sign Up
                 </button>
               </Link>
@@ -277,7 +281,7 @@ export const SignUpForm: React.FC = () => {
               <input
                 type="email"
                 placeholder="E-mail address"
-                className="px-3 py-2 pl-9 w-56 text-xs text-gray-700 dark:text-gray-300 bg-gray-300 dark:bg-[#121212] rounded-l-full focus:outline-none "
+                className="px-3 py-2 pl-9 w-56 text-xs text-gray-700 dark:text-gray-300 bg-[#cccccc] dark:bg-[#121212] rounded-l-full focus:outline-none "
               />
               <button
                 type="button"
