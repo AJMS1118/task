@@ -22,14 +22,15 @@ export const LanguageSelector: React.FC<LanguageSelectorProps> = ({
     flagCode: "Gb",
   });
   const dropdownRef = useRef<HTMLDivElement>(null);
+  const closeTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   const languages: Language[] = [
     { code: "En", name: "English", flagCode: "Gb" },
     { code: "De", name: "Deutsch", flagCode: "De" },
     { code: "Pl", name: "Polish", flagCode: "Pl" },
     { code: "Pt", name: "Portugues", flagCode: "Pt" },
-    { code: "Ru", name: "Русский", flagCode: "Ru" },
-    { code: "Es", name: "Español", flagCode: "Es" },
+    { code: "Ru", name: "Russian", flagCode: "Ru" },
+    { code: "Es", name: "Spanish", flagCode: "Es" },
   ];
 
   useEffect(() => {
@@ -54,6 +55,28 @@ export const LanguageSelector: React.FC<LanguageSelectorProps> = ({
     setIsOpen(false);
   };
 
+  const handleMouseEnter = () => {
+    if (closeTimeoutRef.current) {
+      clearTimeout(closeTimeoutRef.current);
+      closeTimeoutRef.current = null;
+    }
+    setIsOpen(true);
+  };
+
+  const handleMouseLeave = () => {
+    closeTimeoutRef.current = setTimeout(() => {
+      setIsOpen(false);
+    }, 200);
+  };
+
+  useEffect(() => {
+    return () => {
+      if (closeTimeoutRef.current) {
+        clearTimeout(closeTimeoutRef.current);
+      }
+    };
+  }, []);
+
   const renderFlag = (flagCode: string) => (
     <ReactCountryFlag
       countryCode={flagCode}
@@ -70,8 +93,8 @@ export const LanguageSelector: React.FC<LanguageSelectorProps> = ({
     <div
       className="relative"
       ref={dropdownRef}
-      onMouseEnter={() => setIsOpen(true)}
-      onMouseLeave={() => setIsOpen(false)}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
     >
       <div className="flex items-center">
         <div className="flex items-center justify-center w-8 h-8 rounded-full bg-gray-100 dark:bg-gray-700 mr-[-0.5rem] z-10 border border-gray-200 dark:border-gray-600 overflow-hidden">
@@ -79,7 +102,7 @@ export const LanguageSelector: React.FC<LanguageSelectorProps> = ({
         </div>
 
         <button
-          className="flex items-center gap-1 rounded-r-md border-gray-200  pl-3 pr-2 py-1 bg-gray-200 dark:bg-[#1e1e1e] dark:text-gray-200"
+          className="flex items-center gap-1 rounded-r-md border-gray-200  pl-3 pr-2 py-1 bg-gray-300 dark:bg-[#1e1e1e] dark:text-gray-200"
           aria-expanded={isOpen}
           aria-haspopup="listbox"
         >
@@ -93,7 +116,6 @@ export const LanguageSelector: React.FC<LanguageSelectorProps> = ({
         </button>
       </div>
 
-      {/* Menú desplegable */}
       {isOpen && (
         <div className="absolute right-0 top-full mt-1 bg-white dark:bg-[#222222]   rounded-2xl shadow-lg z-50 overflow-hidden w-full min-w-[180px]">
           {languages.map((language, index) => (
@@ -102,7 +124,7 @@ export const LanguageSelector: React.FC<LanguageSelectorProps> = ({
               onClick={() => handleSelectLanguage(language)}
               className={`
                 flex items-center px-4 py-2 cursor-pointer w-full
-                hover:bg-gray-100 dark:hover:bg-[#303030]/90
+                hover:bg-gray-100 dark:hover:bg-[#121212]/50
                 transition-colors duration-150
                 ${index === 0 ? "rounded-t-lg" : ""} 
                 ${index === languages.length - 1 ? "rounded-b-lg" : ""}
@@ -119,18 +141,3 @@ export const LanguageSelector: React.FC<LanguageSelectorProps> = ({
     </div>
   );
 };
-
-// Nota: Para usar banderas con colores, se recomienda instalar:
-// npm install react-country-flag
-// Y luego importar y usar ReactCountryFlag como:
-// import ReactCountryFlag from "react-country-flag";
-//
-// <ReactCountryFlag
-//   countryCode={flagCode}
-//   svg
-//   style={{
-//     width: '24px',
-//     height: '24px',
-//     borderRadius: '50%',
-//   }}
-// />

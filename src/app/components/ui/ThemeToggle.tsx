@@ -16,26 +16,28 @@ export const ThemeToggle: React.FC = () => {
         <div className="absolute inset-0 flex items-center justify-between">
           <div
             className={`h-8 w-8 rounded-full transition-all duration-300 ${
-              isDark ? "bg-gray-800 scale-110" : "bg-white scale-75"
+              isDark ? "toogle-dark scale-100" : "toogle-light scale-75"
             }`}
           />
 
           <div
-            className={`h-4 w-4 -mx-2 transition-colors duration-300 ${
-              !isDark ? "bg-white" : "bg-gray-800"
+            className={`h-3 w-2.5 -mx-2 transition-colors duration-300 ${
+              !isDark ? "bg-white" : "bg-[#303030]"
             }`}
           />
 
           <div
-            className={`h-8 w-8 rounded-full transition-all duration-300 ${
-              !isDark ? "bg-white scale-110" : "bg-gray-800 scale-75"
+            className={`h-8 w-8  rounded-full transition-all duration-300 ${
+              !isDark ? "toogle-light-1 scale-100" : "toogle-dark scale-75"
             }`}
           />
         </div>
 
         <span
           className={`absolute inline-flex h-6 w-6 transform items-center justify-center rounded-full shadow-md transition-all duration-300 ease-in-out ${
-            isDark ? "translate-x-9 bg-gray-800" : "translate-x-1 bg-white"
+            isDark
+              ? "translate-x-9 toogle-dark-1"
+              : "translate-x-1 toogle-light"
           }`}
         />
 
